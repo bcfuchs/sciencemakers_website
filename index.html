@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+  <head lang="en">
+    <!--#include virtual="head.html"-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top" data-activeslide="1">
+      <!--#include virtual="navbar.html" -->
+    </div>
+    <!-- /.navbar -->
+    <!-- === Arrows === -->
+    <div id="arrows">
+      <div id="arrow-up" class="disabled"></div>
+      <div id="arrow-down"></div>
+      <div id="arrow-left" class="disabled visible-lg"></div>
+      <div id="arrow-right" class="disabled visible-lg"></div>
+    </div>
+    <!-- /.arrows -->
+
+    <div class="slide story" id="slide-1" data-slide="1">
+      <!--#include virtual="intro.html"-->
+    </div>
+
+
+    <div class="slide story" id="slide-2" data-slide="2">
+      <!--#include virtual="community.html" -->
+    </div>
+
+
+    <div class="slide story" id="slide-3" data-slide="3">
+            <!--#include virtual="portf.html" -->
+    </div>
+
+
+    <div class="slide story" id="slide-4" data-slide="4">
+      <!--#include virtual="challenges.html" -->
+    </div>
+
+
+    <div class="slide story" id="slide-5" data-slide="5">
+      <!--#include virtual="meet.html" -->
+    </div>
+
+
+    <div class="slide story" id="slide-5b" data-slide="5b" style="display:none">
+      <!--#include virtual="club.html" -->
+    </div>
+
+
+    <div class="slide story" id="slide-5a" data-slide="5a">
+        <!--#include virtual="team.html" -->
+    </div>
+
+
+    <div class="slide story hide" id="slide-7" data-slide="7">
+        <!--#include virtual="ambass.html" -->
+    </div>
+
+    <div class="slide story" id="slide-6" data-slide="6">
+      <!--#include virtual="contact.html"-->
+    </div>
+
+     <div class="footer" id="slide-footer" data-slide="footer-1">
+       <!--#include virtual="footer.html"-->
+     </div>
+
+     <!-- content for portfolio pop-ups -->
+     <div style="display: none">
+
+       <div id="lates-app">
+	 <iframe width="450px" height="500px" src="http://sml-app.mobilecollective.co.uk"></iframe>
+       </div>
+
+
+
+       <div id="meetup-portfolio">
+	 <!--#include virtual="meetup-portfolio.html"-->
+       </div>
+
+       <div id="alaska-portfolio" class="sm-portfolio">
+	 <!--#include virtual="alaska-portfolio.html"-->
+       </div> <!--  #alaska-portfolio -->
+
+       <div id="ef-portfolio" class="sm-portfolio">
+	 <!--#include virtual="ef-portfolio.html"-->
+       </div> <!--  #ef-portfolio -->
+
+       <div id="mozfest-portfolio" class="sm-portfolio">
+	 <!--#include virtual="mozfest-portfolio.html"-->
+       </div> <!--  #mozfest-portfolio -->
+
+       <div id="sml-portfolio" class="sm-portfolio">
+	 <!--#include virtual="sml-portfolio.html"-->
+       </div> 
+
+       <div id="summit-portfolio" class="sm-portfolio">
+	 <!--#include virtual="summit-portfolio.html"-->
+       </div> <!--  #summit-portfolio -->
+
+     </div>
+</body>
+
+<!-- SCRIPTS -->
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="fancybox/jquery.fancybox.pack-v=2.1.5.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/html5shiv.js"></script>
+<script src="js/script.js"></script>
+<!-- fancybox init -->
+<script>
+  $(document).ready(function(e) {
+  var lis = $('.nav > li');
+  menu_focus(lis[0], 1);
+  var onC = function(e) {
+  alert(e)
+  };
+  $(".fancybox").fancybox({
+  padding : 10,
+  onStart : function() {
+
+  },
+  helpers : {
+  overlay : {
+  locked : false
+  }
+  }
+  });
+
+  });
+</script>
+<script>
+  (function(i, s, o, g, r, a, m) {
+  i['GoogleAnalyticsObject'] = r;
+  i[r] = i[r] || function() {
+  (i[r].q = i[r].q || []).push(arguments)
+  }, i[r].l = 1 * new Date();
+  a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+  a.async = 1;
+  a.src = g;
+  m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js',
+  'ga');
+
+  ga('create', 'UA-47193721-1', 'sciencemakers.net');
+  ga('send', 'pageview');
+</script>
+
+<script>
+  $(document).ready(function(){
+
+  if (location.href.match(/#show(.*)$/)) {
+  
+       var el = location.href.match(/#show(.*)$/);
+      $(el[1]).removeClass('hide');
+//         console.log($(el[1]));
+        $('html, body').animate({
+       scrollTop: $(el[1]).offset().top
+        }, 2000);
+  
+  }
+    if (location.href.match(/#news(.*)$/)) {
+       console.log('news');
+       var el = location.href.match(/#news(.*)$/);
+
+
+  console.log($(el[1]));
+  console.log('clicked');
+$(el[1]).fancybox({
+            'autoScale': true,
+            'transitionIn': 'elastic',
+            'transitionOut': 'elastic',
+            'speedIn': 500,
+            'speedOut': 300,
+            'autoDimensions': true,
+            'centerOnScroll': true // remove the trailing comma!!
+        }).click();
+
+
+}
+  });
+  
+</script>
+
+</html>

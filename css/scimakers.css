@@ -1,0 +1,95 @@
+#blog-container {
+
+text-align:left;
+}
+.dev1 {
+	display:none;
+
+}
+
+.hide {
+	display:none;
+	
+	
+}
+.sm-portfolio img.floatleft {
+float: left;
+margin: 2px 0px 10px 0px;
+padding-right: 20px;
+}
+
+#blablabla { 
+
+}
+
+.container {
+
+}
+
+#slide-2 {
+
+background-color: #16a79d;
+
+}
+
+#slide-4 {
+
+background-color: #cf4858;
+}
+
+#slide-5 {
+
+background-color: #4f8598;;
+}
+
+#slide-6 {
+
+background-color: #43454f;
+}
+
+
+.paralink {
+text-decoration: underline;
+color: white;
+
+
+}
+.paralink:hover  {
+color: silver;
+
+
+
+
+}
+
+
+img.circle {
+  -webkit-border-radius: 1000px;
+  -moz-border-radius: 1000px;
+  border-radius: 1000px;
+  height: 200px;
+}
+
+#lates-app {
+
+}
+.attr {
+color: #bbb;
+
+}
+.footer {
+	background-color: #1f1f1f;
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding-bottom: 100px;
+	padding-top: 5px;
+	text-align: center;
+}
+.footer .container {
+padding-bottom: 5px !important;
+
+}
+
+
+
+
