@@ -74,8 +74,8 @@
 
 
 
-       <div id="meetup-portfolio">
-	 <!--#include virtual="meetup-portfolio.html"-->
+       <div id="moz2015-portfolio">
+	 <!--#include virtual="moz2015-portfolio.html"-->
        </div>
 
        <div id="alaska-portfolio" class="sm-portfolio">
@@ -92,6 +92,10 @@
 
        <div id="sml-portfolio" class="sm-portfolio">
 	 <!--#include virtual="sml-portfolio.html"-->
+       </div> 
+
+       <div id="geokey-portfolio" class="sm-portfolio">
+	 <!--#include virtual="geokey-portfolio.html"-->
        </div> 
 
        <div id="summit-portfolio" class="sm-portfolio">
@@ -150,7 +154,11 @@
 
 <script>
   $(document).ready(function(){
-
+  console.log($('.nav').offset())
+  $("a.paralink").click(function(){
+  console.log(this.href);
+  window.open(this.href);
+});
   if (location.href.match(/#show(.*)$/)) {
   
        var el = location.href.match(/#show(.*)$/);
