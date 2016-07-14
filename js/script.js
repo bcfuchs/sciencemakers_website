@@ -154,18 +154,21 @@ function menu_focus( element, i ) {
 	$(element).addClass('active');
 	
 	var icon = $(element).find('.icon');
+
+        var left_pos,el_width;
+    if (icon !== undefined  && icon.offset() !== undefined) {
+		left_pos = icon.offset().left - $('.nav').offset().left;
+		el_width = icon.width() + $(element).find('.text').width() + 10;
 	
-	var left_pos = icon.offset().left - $('.nav').offset().left;
-	var el_width = icon.width() + $(element).find('.text').width() + 10;
-	
-	$('.active-menu').stop(false, false).animate(
-		{
-			left: left_pos,
-			width: el_width
-		},
-		1500,
-		'easeInOutQuart'
-	);
+		$('.active-menu').stop(false, false).animate(
+			{
+				left: left_pos,
+				width: el_width
+			},
+			1500,
+			'easeInOutQuart'
+		);
+    }
 }
 
 function enable_arrows( dataslide ) {
@@ -256,7 +259,9 @@ jQuery(document).ready(function ($) {
 	
 	images.hover(
 		function(e) {
-			var asta = $(this).find('img');
+
+		    console.log(this);
+		    var asta = $(this).find('img');
 			$('#slide-3 img').not( asta ).stop(false, false).animate(
 				{
 					opacity: .5
@@ -264,13 +269,18 @@ jQuery(document).ready(function ($) {
 				'fast',
 				'linear'
 			);
-			var zoom = $('<div class="zoom"></div>');
+		    var title = asta.attr('alt');
+		    
+		    console.log(title);
+		    $(this).append('<h2 class="title-hover">'+title+'</h2>');
+		    var zoom = $('<div class="zoom"></div>');
 			if ( $(this).hasClass('video') ) {
 				zoom.addClass('video');
 			}
 			$(this).prepend(zoom);
 		},
-		function(e) {
+	    function(e) {
+		$('.title-hover').remove();
 			$('#slide-3 img').stop(false, false).animate(
 				{
 					opacity: 1
