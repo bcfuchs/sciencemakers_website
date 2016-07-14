@@ -1,3 +1,13 @@
+h2.title-hover {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    width: 100%;
+    font-size: 50px;
+    color: white;
+}
+
+
 .fancybox-nav {
 width: 10% !important;
 }

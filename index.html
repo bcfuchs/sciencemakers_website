@@ -69,37 +69,37 @@
      <div style="display: none">
 
        <div id="lates-app">
-	 <iframe width="450px" height="500px" src="http://sml-app.mobilecollective.co.uk"></iframe>
+	 <iframe width="450px" height="500px" src="//sml-app.mobilecollective.co.uk"></iframe>
        </div>
 
 
 
        <div id="moz2015-portfolio">
-	 <!--#include virtual="moz2015-portfolio.html"-->
+	 <!--#include virtual="portfolios/moz2015-portfolio.html"-->
        </div>
 
-       <div id="alaska-portfolio" class="sm-portfolio">
-	 <!--#include virtual="alaska-portfolio.html"-->
+       <div id="alaska-portfolio" class="sm-portfolio title-on-hover" data-title="Arctic Citizen Science">
+	 <!--#include virtual="portfolios/alaska-portfolio.html"-->
        </div> <!--  #alaska-portfolio -->
 
        <div id="ef-portfolio" class="sm-portfolio">
-	 <!--#include virtual="ef-portfolio.html"-->
+	 <!--#include virtual="portfolios/ef-portfolio.html"-->
        </div> <!--  #ef-portfolio -->
 
        <div id="mozfest-portfolio" class="sm-portfolio">
-	 <!--#include virtual="mozfest-portfolio.html"-->
+	 <!--#include virtual="portfolios/mozfest-portfolio.html"-->
        </div> <!--  #mozfest-portfolio -->
 
        <div id="sml-portfolio" class="sm-portfolio">
-	 <!--#include virtual="sml-portfolio.html"-->
+	 <!--#include virtual="portfolios/sml-portfolio.html"-->
        </div> 
 
        <div id="geokey-portfolio" class="sm-portfolio">
-	 <!--#include virtual="geokey-portfolio.html"-->
+	 <!--#include virtual="portfolios/geokey-portfolio.html"-->
        </div> 
 
        <div id="summit-portfolio" class="sm-portfolio">
-	 <!--#include virtual="summit-portfolio.html"-->
+	 <!--#include virtual="portfolios/summit-portfolio.html"-->
        </div> <!--  #summit-portfolio -->
 
      </div>
@@ -152,44 +152,6 @@
   ga('send', 'pageview');
 </script>
 
-<script>
-  $(document).ready(function(){
-  console.log($('.nav').offset())
-  $("a.paralink").click(function(){
-  console.log(this.href);
-  window.open(this.href);
-});
-  if (location.href.match(/#show(.*)$/)) {
-  
-       var el = location.href.match(/#show(.*)$/);
-      $(el[1]).removeClass('hide');
-//         console.log($(el[1]));
-        $('html, body').animate({
-       scrollTop: $(el[1]).offset().top
-        }, 2000);
-  
-  }
-    if (location.href.match(/#news(.*)$/)) {
-       console.log('news');
-       var el = location.href.match(/#news(.*)$/);
-
-
-  console.log($(el[1]));
-  console.log('clicked');
-$(el[1]).fancybox({
-            'autoScale': true,
-            'transitionIn': 'elastic',
-            'transitionOut': 'elastic',
-            'speedIn': 500,
-            'speedOut': 300,
-            'autoDimensions': true,
-            'centerOnScroll': true // remove the trailing comma!!
-        }).click();
-
-
-}
-  });
-  
-</script>
+<script src="js/scimaker.js"></script>
 
 </html>
