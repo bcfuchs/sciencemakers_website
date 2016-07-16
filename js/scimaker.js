@@ -101,8 +101,11 @@
 	    return
 	var sliderel = $('<div class="slider"></div>');
 	var make_box = function(d) {
-	    
+	    var img = $(d.content).find("img")[0];
+	    var grad = 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 100%)';
 	    var box = $("#post-summary-template").clone().attr('id','')
+	    $(box).css('background-image',grad + ',url("'+$(img).attr('src')+'")');
+
 	    $(box).find(".title").html(d.title);
 	    $(box).find(".description").html(d.description);
 	    $(sliderel).append(box);
