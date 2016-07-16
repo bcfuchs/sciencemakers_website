@@ -39,7 +39,22 @@ padding-right: 20px;
 .container {
 
 }
+#slide-8 {
+background: white;
+text-align:left;
+}
 
+#slide-8 .meta {
+    margin-bottom: 10px;
+}
+
+#slide-8 .item {
+    border-top: 1px solid silver;
+}
+
+#slide-8 .title {
+    font-size: 32px;
+}
 #slide-2 {
 
 background-color: #16a79d;
