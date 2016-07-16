@@ -118,6 +118,7 @@
 	    });
 	    $(blogel).append(sliderel);
 	    $('#slide-6').after(blogel)
+	    scroll_to_div();
 	}
 
 	$.get(feed_url, process_data);
