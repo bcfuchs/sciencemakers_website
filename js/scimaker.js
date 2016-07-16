@@ -121,6 +121,7 @@
 	    scroll_to_div();
 	}
 
+	
 	$.get(feed_url, process_data);
     }
     var doBlog = function() {
