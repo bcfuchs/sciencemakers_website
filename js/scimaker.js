@@ -62,17 +62,13 @@
 
 
 ! function() {
-    var doBlog = function() {
-	if ($('#slide-8').length) {
-	    $('#slide-8').remove();
-	    return
-	}
-	var blogel = $('<div id="slide-8" class="slide story slide-8"></div>')
+    /** constants */
+    var feed_url = 'http://mobilecollective.co.uk/?feed=rss2&tag=sciencemakers'
 
-	var containerel = $('<div class="container"></div>');
-	
-	
-	var get_data = function(el) {
+    /** functions */
+    // get data from xml
+    // note - jquery can't handle namespaces, so text:encoded -> find("encoded")
+	function get_data (el) {
 	    var data = {}
 	    data.author = el.find("creator").text()
 	    data.title = el.find("title").text()
@@ -84,6 +80,34 @@
 
 
 	}
+
+    function erase() {
+	if ($('#slide-8').length) {
+	    $('#slide-8').remove();
+	    return 1;
+	}
+	return 0;
+    }
+    var doSummary = function() {
+	if (erase())
+	    return
+	
+	var process_data = function() {
+	    $(data).find("item").each(function() {
+
+	    });
+	}
+    	$.get(feed_url, process_data);
+    }
+    var doBlog = function() {
+	if (erase())
+	    return
+	
+	var blogel = $('<div id="slide-8" class="slide story slide-8"></div>')
+
+	var containerel = $('<div class="container"></div>');
+	
+	
 
 	var add_to_blog = function(d) {
 	    var item = $("#item-template").clone().attr('id','');
@@ -108,7 +132,7 @@
 	    $('#slide-6').after(blogel)
 	}
 	
-	var feed_url = 'http://mobilecollective.co.uk/?feed=rss2&tag=sciencemakers'
+
 
 	var process_data = function (data) {
 
