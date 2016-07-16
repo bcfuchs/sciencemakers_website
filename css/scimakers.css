@@ -101,6 +101,25 @@ text-align:left;
 
 .alignright { float: right; margin-left: 15px; }
 
+/** posts slider */
+.slider {
+width: 100%;
+clear: both;
+}
+
+.summary-box {
+    display: inline-block;
+    /* position: relative; */
+    /* clear: both; */
+    width: 300px;
+    padding: 0 10px 0 10px;
+    margin: 10px 20px 10px 20px;
+    height: 300px;
+    border: 1px solid black;
+
+
+}
+
 #slide-2 {
 
 background-color: #16a79d;

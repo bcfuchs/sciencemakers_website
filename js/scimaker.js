@@ -64,8 +64,16 @@
 ! function() {
     /** constants */
     var feed_url = 'http://mobilecollective.co.uk/?feed=rss2&tag=sciencemakers'
-
+    var blogel = $('<div id="slide-8" class="slide story slide-8"></div>')
+    
     /** functions */
+
+    function scroll_to_div() {
+	$('html, body').animate({
+	    scrollTop: $("#slide-8").offset().top
+	}, 2000);
+
+    }
     // get data from xml
     // note - jquery can't handle namespaces, so text:encoded -> find("encoded")
 	function get_data (el) {
@@ -91,19 +99,34 @@
     var doSummary = function() {
 	if (erase())
 	    return
-	
-	var process_data = function() {
+	var sliderel = $('<div class="slider"></div>');
+	var make_box = function(d) {
+	    
+	    var box = $("#post-summary-template").clone().attr('id','')
+	    $(box).find(".title").html(d.title);
+	    $(box).find(".description").html(d.description);
+	    $(sliderel).append(box);
+	}
+	var process_data = function(data) {
 	    $(data).find("item").each(function() {
+		// make a preview box for loading into slider
+		var el = $(this);
+		console.log("getting data...");
+		var d = get_data(el);
+		make_box(d)
 
 	    });
+	    $(blogel).append(sliderel);
+	    $('#slide-6').after(blogel)
 	}
-    	$.get(feed_url, process_data);
+
+	$.get(feed_url, process_data);
     }
     var doBlog = function() {
 	if (erase())
 	    return
 	
-	var blogel = $('<div id="slide-8" class="slide story slide-8"></div>')
+
 
 	var containerel = $('<div class="container"></div>');
 	
@@ -147,9 +170,7 @@
 		    
 		});
 	    add_to_page()
-	    $('html, body').animate({
-		scrollTop: $("#slide-8").offset().top
-	    }, 2000);
+	    scroll_to_div();
 	}
 	
     	$.get(feed_url, process_data);
@@ -158,6 +179,7 @@
 
     $(document).ready(function(){
 	easterEgg('s',doBlog);
+	easterEgg('t',doSummary);
 
     });
 
