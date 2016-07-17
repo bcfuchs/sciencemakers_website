@@ -113,7 +113,9 @@
 
     function erase() {
 	if ($('#slide-8').length) {
+	    $('#slide-8').html('');
 	    $('#slide-8').remove();
+	    
 	    containerel = $('<div class="container"></div>');
 	    sliderel = $('<div class="slider"></div>');
 	    return 1;
