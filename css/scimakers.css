@@ -108,6 +108,7 @@ clear: both;
 }
 
 .summary-box {
+    cursor: pointer;
     overflow: hidden;
     color: white;
 //    line-height: 100%;
@@ -126,6 +127,7 @@ clear: both;
 
 
 }
+
 
 #slide-2 {
 

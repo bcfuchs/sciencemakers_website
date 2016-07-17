@@ -62,9 +62,11 @@
 
 
 ! function() {
-    /** constants */
+    /** vars */
     var feed_url = 'http://mobilecollective.co.uk/?feed=rss2&tag=sciencemakers'
     var blogel = $('<div id="slide-8" class="slide story slide-8"></div>')
+    var containerel = $('<div class="container"></div>');
+    var sliderel = $('<div class="slider"></div>');
     
     /** functions */
 
@@ -88,24 +90,60 @@
 
 
 	}
+	
+
+    function add_to_blog (d,cb) {
+	var item = $("#item-template").clone().attr('id','');
+	// object keys match classes in template
+	for (var i in d) {
+	    $(item).find("."+i).append(d[i]);
+	}
+	var link = $(item).find(".link");
+	var href = $(link).text();	
+	$(item).find(".link").html('<a href="'+href+'">'+href+'</a>');
+	cb(item);
+
+	
+	var div = $("<div></div>");
+
+	    // we could just load a fragment, but then we get unwanted elements...	    
+//	    $(containerel).append($(div).load(href + " .blog-post",function(){console.log("loaded")}));
+	}
+
 
     function erase() {
 	if ($('#slide-8').length) {
 	    $('#slide-8').remove();
+	    containerel = $('<div class="container"></div>');
+	    sliderel = $('<div class="slider"></div>');
 	    return 1;
 	}
 	return 0;
     }
+    // create summary boxes linked to full blog post
     var doSummary = function() {
 	if (erase())
 	    return
-	var sliderel = $('<div class="slider"></div>');
+	var showBlog = function(e) {
+
+	}
+
 	var make_box = function(d) {
 	    var img = $(d.content).find("img")[0];
 	    var grad = 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 100%)';
+	    var gradhover = 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%)';
 	    var box = $("#post-summary-template").clone().attr('id','')
+	    var hoverBlogPost = function(e) {
+		$(this).css('background-image','');
+		$(this).css('background-image',gradhover + ',url("'+$(img).attr('src')+'")');
+	    }
+	    var hoverOut = function(e) {
+		$(this).css('background-image','');
+		$(this).css('background-image',grad + ',url("'+$(img).attr('src')+'")');
+	    }
 	    $(box).css('background-image',grad + ',url("'+$(img).attr('src')+'")');
-
+	    $(box).click(showBlog);
+	    $(box).hover(hoverBlogPost,hoverOut);
 	    $(box).find(".title").html(d.title);
 	    $(box).find(".description").html(d.description);
 	    $(sliderel).append(box);
@@ -133,28 +171,8 @@
 	
 
 
-	var containerel = $('<div class="container"></div>');
+
 	
-	
-
-	var add_to_blog = function(d) {
-	    var item = $("#item-template").clone().attr('id','');
-
-	    for (var i in d) {
-		
-		
-		$(item).find("."+i).append(d[i]);
-	    }
-	    var link = $(item).find(".link");
-	    var href = $(link).text();
-
-	    $(item).find(".link").html('<a href="'+href+'">'+href+'</a>');
-	    $(containerel).append(item);
-	    var div = $("<div></div>");
-// we could just load a fragment, but then we get unwanted elements...	    
-//	    $(containerel).append($(div).load(href + " .blog-post",function(){console.log("loaded")}));
-	}
-
 	var add_to_page = function() {
 	    $(blogel).append(containerel)
 	    $('#slide-6').after(blogel)
@@ -168,7 +186,10 @@
 		function () { // or "item" or whatever suits your feed
 		    var el = $(this);
 		    var d = get_data(el);
-		    add_to_blog(d)
+		    var atb_cb = function(item) {
+			$(containerel).append(item);
+		    }
+		    add_to_blog(d,atb_cb)
 		    console.log(d)
 		    
 		    //     $('body').prepend(el.find('encoded').text())
