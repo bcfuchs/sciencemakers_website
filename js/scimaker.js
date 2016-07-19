@@ -71,6 +71,8 @@
     /** functions */
 
     function scroll_to_div() {
+	console.log('scrool-to-div');
+	console.log($("#slide-8").offset().top);
 	$('html, body').animate({
 	    scrollTop: $("#slide-8").offset().top
 	}, 2000);
@@ -126,8 +128,25 @@
     var doSummary = function() {
 	if (erase())
 	    return
-	var showBlog = function(e) {
 
+
+	var make_popup = function(el) {
+
+	    return $($(el).clone()).fancybox({
+		'autoScale': true,
+		'transitionIn': 'elastic',
+		'transitionOut': 'elastic',
+		'speedIn': 500,
+		'speedOut': 300,
+		'autoDimensions': true,
+		'centerOnScroll': true,
+		padding: 2,
+		titleShow: true,
+		overlayColor: '#111',
+		afterClose: scroll_to_div    // note value changes as fboxes are removed...
+	    });
+
+	    
 	}
 
 	var make_box = function(d) {
@@ -144,11 +163,15 @@
 		$(this).css('background-image',grad + ',url("'+$(img).attr('src')+'")');
 	    }
 	    $(box).css('background-image',grad + ',url("'+$(img).attr('src')+'")');
-	    $(box).click(showBlog);
+
 	    $(box).hover(hoverBlogPost,hoverOut);
+
 	    $(box).find(".title").html(d.title);
 	    $(box).find(".description").html(d.description);
+	    var popup = make_popup(box);
+	    $(box).click(function(){ popup.click()});
 	    $(sliderel).append(box);
+
 	}
 	var process_data = function(data) {
 	    $(data).find("item").each(function() {

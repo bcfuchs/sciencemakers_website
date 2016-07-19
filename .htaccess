@@ -1,5 +1,6 @@
 RedirectMatch 301 /\.git /
-RedirectMatch 301 /conf  /
+RedirectMatch 301 /conf/*  /
+RedirectMatch 301 /Dockerfile  /
 RedirectMatch 301 /README.md  /
 Options +Includes
 AddHandler server-parsed .html
