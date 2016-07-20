@@ -10,7 +10,7 @@ Docker
 First, build an image
 
 ```
-   docker build -t . scimaker_base
+   docker build -t scimaker_base .
 ```
 
 Then run the image with
