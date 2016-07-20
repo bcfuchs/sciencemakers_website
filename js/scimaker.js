@@ -64,9 +64,12 @@
 ! function() {
     /** vars */
     var feed_url = 'http://mobilecollective.co.uk/?feed=rss2&tag=sciencemakers'
-    var blogel = $('<div id="slide-8" class="slide story slide-8"></div>')
+    var blogel = $('<div id="slide-8" class="slide story slide-8" data-slide="8"></div>')
+    var headline = '<div class="row title-row"><div class="col-12 font-light">Our <span class="font-semibold">News</span></div></div>';
     var containerel = $('<div class="container"></div>');
     var sliderel = $('<div class="slider"></div>');
+    var row =  $('<div class="row"></div>');
+
     
     /** functions */
 
@@ -117,7 +120,6 @@
 	if ($('#slide-8').length) {
 	    $('#slide-8').html('');
 	    $('#slide-8').remove();
-	    
 	    containerel = $('<div class="container"></div>');
 	    sliderel = $('<div class="slider"></div>');
 	    return 1;
@@ -206,13 +208,19 @@
 
 
 	var process_data = function (data) {
-
+	    $(containerel).append(headline);
+	    var i = 0;
 	    $(data).find("item").each(
-		function () { // or "item" or whatever suits your feed
+		function (i) { 
+
 		    var el = $(this);
 		    var d = get_data(el);
+
+		    var date = Date.parse(d.pubdate);
+		    var id = "blogpost-" +date;
 		    var atb_cb = function(item) {
-			$(containerel).append(item);
+			
+			$(containerel).append($(row).clone().attr('id',id).append(item));
 		    }
 		    add_to_blog(d,atb_cb)
 		    console.log(d)
@@ -227,11 +235,16 @@
     	$.get(feed_url, process_data);
 
     }
+    var show_devtools = function(e) {
+	$("#devtools").toggleClass("hide");
 
+	
+    }
+    
     $(document).ready(function(){
 	easterEgg('s',doBlog);
 	easterEgg('t',doSummary);
-
+	easterEgg('d',show_devtools);
     });
 
     function easterEgg(pass,f) {
