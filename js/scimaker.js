@@ -82,7 +82,7 @@
 
     }
     // get data from xml
-    // note - jquery can't handle namespaces, so text:encoded -> find("encoded")
+    // note - jquery can't handle namespaces, so <text:encoded/> -> find("encoded")
 	function get_data (el) {
 	    var data = {}
 	    data.author = el.find("creator").text()
@@ -236,9 +236,7 @@
 
     }
     var show_devtools = function(e) {
-	$("#devtools").toggleClass("hide");
-
-	
+	$("#devtools").toggleClass("hide");	
     }
     
     $(document).ready(function(){
